@@ -1,31 +1,41 @@
+import { createStore } from "redux";
+
 const saldoEl = document.querySelector("h1 span");
 const inputEl = document.querySelector("input");
 
-// Nasłuchujemy na kliknięcie w przyciski
 document.querySelector("#deposit").addEventListener("click", onDepositClick);
 document.querySelector("#withdraw").addEventListener("click", onWithdrawClick);
 
-// Poniżej wykonaj zadanie:
+function reducer(state = 0, action = {}) {
+    switch (action.type) {
+        case "WIDTHDRAW":
+            return state - action.amount;
+        case "DEPOSIT":
+            return state + action.amount;
+    }
 
+    return state;
+}
 
+const withdrawMoney = (amount) => ({ type: "WIDTHDRAW", amount });
+const depositMoney = (amount) => ({ type: "DEPOSIT", amount });
 
+const store = createStore(reducer);
 
+store.subscribe(() => updateSaldo(store.getState()));
 
-// Funkcja aktualizująca saldo na stronie
 function updateSaldo(hajs) {
     saldoEl.innerText = `${hajs} PLN`;
 }
 
 function onWithdrawClick() {
     const hajs = Number(inputEl.value);
-    // dispatch correct action on store
-    // store.dispatch()
+    store.dispatch(withdrawMoney(hajs));
 }
 
 function onDepositClick() {
     const hajs = Number(inputEl.value);
-    // dispatch correct action on store
-    // store.dispatch()
+    store.dispatch(depositMoney(hajs));
 }
 
 

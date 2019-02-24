@@ -75,8 +75,8 @@ Po zaznaczeniu odpowiedniego filtra (backend/frontend/all) na stronie mają się
 Przeróbcie zadanie 3, tak aby wykorzystać bibliotekę `React`.
 
 Komponenty jakie powinny znaleźć się na stronie:
-- <Filter />
-- <Articles /> - komponent powinien zawierać pojedyncze artykuły w postaci <ArticleItem />
+- `<Filter />`
+- `<Articles />` - komponent powinien zawierać pojedyncze artykuły w postaci <ArticleItem />
 
 Skorzystaj z pakietu `react-redux` w tym z funkcji `connect` i komponentu `<Provider>`
 
